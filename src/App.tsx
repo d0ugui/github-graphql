@@ -6,7 +6,6 @@ function App() {
   return (
     <div className="flex flex-col items-center">
       <Header />
-
       <Search />
       <Repositories />
     </div>
