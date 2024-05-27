@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const repositoriesSlice = createSlice({
   name: "repositories",
   initialState: {
-    repositories: [],
+    data: [],
   },
   reducers: {
     setRepositories: (state, action) => {
-      state.repositories = action.payload.repositories;
+      state.data = action.payload.repositories;
     },
   },
 });

@@ -1,6 +1,12 @@
 import { Search as SearchIcon } from "lucide-react";
 
-export function Search() {
+interface SearchProps {
+  value: string;
+  handleChange(value: string): void;
+  onSubmit(): void;
+}
+
+export function Search({ handleChange, value, onSubmit }: SearchProps) {
   return (
     <section className="flex flex-col max-w-[1200px] w-full mt-20">
       <div className="flex flex-col gap-2">
@@ -20,9 +26,14 @@ export function Search() {
             type="text"
             placeholder="O que você está procurando?"
             className="w-full outline-none"
+            value={value}
+            onChange={(e) => handleChange(e.target.value)}
           />
         </div>
-        <button className="text-white bg-primary py-5 px-10 rounded-tr-lg rounded-br-lg">
+        <button
+          className="text-white bg-primary py-5 px-10 rounded-tr-lg rounded-br-lg"
+          onClick={onSubmit}
+        >
           Search
         </button>
       </div>
