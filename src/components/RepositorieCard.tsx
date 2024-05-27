@@ -1,20 +1,12 @@
 import { Circle, GitFork, SquareCode, Star } from "lucide-react";
+import { RepositoryProps } from "../interfaces/Repository";
 import { languagesColors } from "../utils/colors";
 
-interface RepositorieCardProps {
-  repo: {
-    id: number;
-    nameWithOwner: string;
-    description: string;
-    stargazerCount: number;
-    forkCount: number;
-    primaryLanguage: {
-      name: string;
-    };
-  };
+interface RepositorieCard {
+  repo: RepositoryProps;
 }
 
-export function RepositorieCard({ repo }: RepositorieCardProps) {
+export function RepositorieCard({ repo }: RepositorieCard) {
   const colorsLanguage = languagesColors[repo.primaryLanguage?.name];
 
   return (
