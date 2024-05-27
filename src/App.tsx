@@ -1,4 +1,5 @@
 import { Header } from "./components/Header";
+import { Repositories } from "./components/Repositories";
 import { Search } from "./components/Search";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <Header />
 
       <Search />
+      <Repositories />
     </div>
   );
 }
