@@ -6,5 +6,6 @@ export interface RepositoryProps {
   forkCount: number;
   primaryLanguage: {
     name: string;
+    color: string;
   };
 }
