@@ -1,8 +1,10 @@
-import { useAppSelector } from "../hooks";
+import { setSelectedRepository } from "../features/repositories";
+import { useAppDispatch, useAppSelector } from "../hooks";
 import { RepositorieCard } from "./RepositorieCard";
 
 export function Repositories() {
   const repositories = useAppSelector((state) => state.repositories.data);
+  const dispatch = useAppDispatch();
 
   return (
     <main className="max-w-[1200px] w-full flex items-start mt-20 flex-col mb-20">
@@ -10,7 +12,11 @@ export function Repositories() {
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
         {repositories.map((item) => (
-          <RepositorieCard repo={item} key={item.id} />
+          <RepositorieCard
+            repo={item}
+            key={item.id}
+            onClick={() => dispatch(setSelectedRepository({ data: item }))}
+          />
         ))}
       </div>
     </main>

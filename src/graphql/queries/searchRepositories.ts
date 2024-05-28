@@ -8,11 +8,23 @@ export const searchRepositories = gql`
           id
           nameWithOwner
           description
-          forkCount
           stargazerCount
+          updatedAt
           primaryLanguage {
             name
             color
+          }
+          issues {
+            totalCount
+          }
+          pullRequests {
+            totalCount
+          }
+          forks {
+            totalCount
+          }
+          owner {
+            login
           }
         }
       }

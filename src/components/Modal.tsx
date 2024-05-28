@@ -7,8 +7,13 @@ import {
   Star,
   X,
 } from "lucide-react";
+import { resetSelectedRepository } from "../features/repositories";
+import { useAppDispatch, useAppSelector } from "../hooks";
 
 export function Modal() {
+  const { selectedRepository } = useAppSelector((state) => state.repositories);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="fixed w-[100vw] h-[100vh] inset-0 bg-black/80 backdrop-blur-sm z-50">
       <div className="flex items-center justify-center h-full">
@@ -17,31 +22,32 @@ export function Modal() {
             <div className="flex items-center gap-4">
               <SquareCode size={24} className="text-primary" />
               <h1 className="font-bold text-primary line-clamp-1">
-                creativetimofficial/nextjs-material-kit
+                {selectedRepository?.nameWithOwner}
               </h1>
             </div>
 
-            <button>
+            <button onClick={() => dispatch(resetSelectedRepository())}>
               <X size={24} />
             </button>
           </div>
 
           <p className="text-sm line-clamp-5 mt-5">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.{" "}
+            {selectedRepository?.description}
           </p>
 
           <div className="mt-5 flex justify-between">
             <h3 className="font-bold">
-              Owner: <span className="font-normal">Douglas</span>
+              Owner:{" "}
+              <span className="font-normal">
+                {selectedRepository?.owner.login}
+              </span>
             </h3>
 
             <p className="font-bold">
-              Last updated: <span className="font-normal">2024-05-28</span>
+              Last updated:{" "}
+              <span className="font-normal">
+                {selectedRepository?.updatedAt}
+              </span>
             </p>
           </div>
 
@@ -57,22 +63,22 @@ export function Modal() {
               <div className="flex gap-4 ">
                 <p className="flex items-center gap-1 text-lg">
                   <Star size={24} className="text-primary" />
-                  30
+                  {selectedRepository?.stargazerCount}
                 </p>
 
                 <p className="flex items-center gap-1 text-lg">
                   <GitFork size={24} className="text-primary" />
-                  30
+                  {selectedRepository?.forks.totalCount}
                 </p>
 
                 <p className="flex items-center gap-1 text-lg">
                   <GitPullRequest size={24} className="text-primary" />
-                  30
+                  {selectedRepository?.pullRequests.totalCount}
                 </p>
 
                 <p className="flex items-center gap-1 text-lg">
                   <FileDigit size={24} className="text-primary" />
-                  30
+                  {selectedRepository?.issues.totalCount}
                 </p>
               </div>
 
@@ -80,10 +86,12 @@ export function Modal() {
                 <Circle
                   size={24}
                   className="rounded-full"
-                  color="#f1e05a"
-                  style={{ backgroundColor: "#f1e05a" }}
+                  color={selectedRepository?.primaryLanguage.color}
+                  style={{
+                    backgroundColor: selectedRepository?.primaryLanguage.color,
+                  }}
                 />
-                JavaScript
+                {selectedRepository?.primaryLanguage.name}
               </p>
             </div>
           </div>

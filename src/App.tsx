@@ -12,8 +12,10 @@ import { useAppDispatch, useAppSelector } from "./hooks";
 function App() {
   const [search, setSearch] = useState("");
   const dispatch = useAppDispatch();
-  const repositoriesIsEmpty =
-    useAppSelector((state) => state.repositories.data.length) === 0;
+  const { data, selectedRepository } = useAppSelector(
+    (state) => state.repositories
+  );
+  const repositoriesIsEmpty = data.length === 0;
 
   const [getSearchRepositories, { loading, error }] =
     useLazyQuery(searchRepositories);
@@ -46,7 +48,7 @@ function App() {
         !repositoriesIsEmpty && <Repositories />
       )}
 
-      <Modal />
+      {selectedRepository && <Modal />}
     </div>
   );
 }
