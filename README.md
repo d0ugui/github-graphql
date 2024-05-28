@@ -10,6 +10,10 @@ Projeto proposto originalmente como desafio técnico para uma vaga de front-end.
 
 [![My Skills](https://skillicons.dev/icons?i=ts,vite,tailwind,graphql)](https://skillicons.dev)
 
+## Demo
+
+- [Live](https://github-graphql-five.vercel.app/)
+
 ## Getting Started
 
 1. **Clone project**: `git clone git@github.com:d0ugui/github-graphql.git`
@@ -22,5 +26,3 @@ Projeto proposto originalmente como desafio técnico para uma vaga de front-end.
 This software is available under the following licenses:
 
 - [MIT](https://rem.mit-license.org)
-
-- remove unused icon, add spinner, add loading repositories state in store, disabled search button when is loading, add reponsivity and readme
