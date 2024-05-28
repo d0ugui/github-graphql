@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+<h1 align="center">
+    <img src="./public/banner.png" alt="GraphQL GitHub API" border="0">
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# GraphQL Github API
 
-Currently, two official plugins are available:
+Projeto proposto originalmente como desafio técnico para uma vaga de front-end. A aplicação consiste em estebelcer conexão com a GraphQL Github API e fazer a busca por repositórios.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+[![My Skills](https://skillicons.dev/icons?i=ts,vite,tailwind,graphql)](https://skillicons.dev)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clone project**: `git clone git@github.com:d0ugui/github-graphql.git`
+2. **Install dependencies**: `npm install or yarn`
+3. **Create .env.local following the .env.example file**
+4. **Run front-end**: `npm run dev or yarn dev`
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## License
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This software is available under the following licenses:
+
+- [MIT](https://rem.mit-license.org)
+
+- remove unused icon, add spinner, add loading repositories state in store, disabled search button when is loading, add reponsivity and readme

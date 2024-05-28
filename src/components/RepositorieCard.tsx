@@ -14,7 +14,7 @@ export function RepositorieCard({ repo, ...rest }: RepositorieCard) {
     >
       <div className="flex items-center gap-4">
         <SquareCode size={24} className="text-primary" />
-        <h1 className="font-bold text-primary line-clamp-1">
+        <h1 className="font-bold text-primary line-clamp-1 text-start">
           {repo.nameWithOwner}
         </h1>
       </div>

@@ -4,11 +4,13 @@ import { RepositoryProps } from "../interfaces/Repository";
 interface RepositoriesState {
   data: [] | RepositoryProps[];
   selectedRepository: RepositoryProps | null;
+  loadingRepositories: boolean;
 }
 
 const initialState: RepositoriesState = {
   data: [],
   selectedRepository: null,
+  loadingRepositories: false,
 };
 
 const repositoriesSlice = createSlice({
@@ -24,6 +26,9 @@ const repositoriesSlice = createSlice({
     resetSelectedRepository: (state) => {
       state.selectedRepository = null;
     },
+    setLoadingRepositories: (state, action) => {
+      state.loadingRepositories = action.payload.loading;
+    },
   },
 });
 
@@ -31,5 +36,6 @@ export const {
   setRepositories,
   setSelectedRepository,
   resetSelectedRepository,
+  setLoadingRepositories,
 } = repositoriesSlice.actions;
 export default repositoriesSlice.reducer;

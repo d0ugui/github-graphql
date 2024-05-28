@@ -10,7 +10,7 @@ export function Repositories() {
     <main className="max-w-[1200px] w-full flex items-start mt-20 flex-col mb-20">
       <h2 className="font-bold text-2xl">Resultados</h2>
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 w-full">
         {repositories.map((item) => (
           <RepositorieCard
             repo={item}

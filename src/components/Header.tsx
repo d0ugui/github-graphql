@@ -1,4 +1,4 @@
-import { FolderGit, Heart, Linkedin } from "lucide-react";
+import { FolderGit, Linkedin } from "lucide-react";
 
 export function Header() {
   return (
@@ -12,8 +12,6 @@ export function Header() {
         <a href="https://www.linkedin.com/in/douglaspo">
           <Linkedin size={24} color="#3575E2" />
         </a>
-
-        <Heart size={22} className="text-heart" />
       </div>
     </header>
   );
