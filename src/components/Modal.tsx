@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { resetSelectedRepository } from "../features/repositories";
 import { useAppDispatch, useAppSelector } from "../hooks";
+import { formatDate } from "../utils/formatDate";
 
 export function Modal() {
   const { selectedRepository } = useAppSelector((state) => state.repositories);
@@ -35,7 +36,7 @@ export function Modal() {
             {selectedRepository?.description}
           </p>
 
-          <div className="mt-5 flex justify-between">
+          <div className="mt-5 flex flex-col justify-between">
             <h3 className="font-bold">
               Owner:{" "}
               <span className="font-normal">
@@ -46,7 +47,7 @@ export function Modal() {
             <p className="font-bold">
               Last updated:{" "}
               <span className="font-normal">
-                {selectedRepository?.updatedAt}
+                {formatDate(selectedRepository!.updatedAt)}
               </span>
             </p>
           </div>
@@ -61,30 +62,30 @@ export function Modal() {
 
             <div className="mt-2 flex items-center justify-between">
               <div className="flex gap-4 ">
-                <p className="flex items-center gap-1 text-lg">
-                  <Star size={24} className="text-primary" />
+                <p className="flex items-center gap-1 text-base">
+                  <Star size={18} className="text-primary" />
                   {selectedRepository?.stargazerCount}
                 </p>
 
-                <p className="flex items-center gap-1 text-lg">
-                  <GitFork size={24} className="text-primary" />
+                <p className="flex items-center gap-1 text-base">
+                  <GitFork size={18} className="text-primary" />
                   {selectedRepository?.forks.totalCount}
                 </p>
 
-                <p className="flex items-center gap-1 text-lg">
-                  <GitPullRequest size={24} className="text-primary" />
+                <p className="flex items-center gap-1 text-base">
+                  <GitPullRequest size={18} className="text-primary" />
                   {selectedRepository?.pullRequests.totalCount}
                 </p>
 
-                <p className="flex items-center gap-1 text-lg">
-                  <FileDigit size={24} className="text-primary" />
+                <p className="flex items-center gap-1 text-base">
+                  <FileDigit size={18} className="text-primary" />
                   {selectedRepository?.issues.totalCount}
                 </p>
               </div>
 
-              <p className="flex items-center gap-1 text-lg ">
+              <p className="flex items-center gap-1 text-base ">
                 <Circle
-                  size={24}
+                  size={18}
                   className="rounded-full"
                   color={selectedRepository?.primaryLanguage.color}
                   style={{
