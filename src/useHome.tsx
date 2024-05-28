@@ -4,11 +4,7 @@ import {
   setPageInfo,
   setRepositories,
 } from "./features/repositories";
-import {
-  searchRepositories,
-  searchRepositoriesNextPage,
-  searchRepositoriesPreviousPage,
-} from "./graphql/queries/searchRepositories";
+import { searchRepositories } from "./graphql/queries/searchRepositories";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 export function useHome() {
@@ -17,21 +13,14 @@ export function useHome() {
     useAppSelector((state) => state.repositories);
   const repositoriesIsEmptyOrLoading = data.length === 0 || loadingRepositories;
 
-  const [getSearchRepositories, { error }] = useLazyQuery(searchRepositories);
-
-  const [getSearchRepositoriesNextPageQuery] = useLazyQuery(
-    searchRepositoriesNextPage
-  );
-
-  const [getSearchRepositoriesPreviousPageQuery] = useLazyQuery(
-    searchRepositoriesPreviousPage
-  );
+  const [getSearchRepositories, { error, fetchMore }] =
+    useLazyQuery(searchRepositories);
 
   async function handleSearchRepositories(query: string) {
     dispatch(setLoadingRepositories({ loading: true }));
 
     const { data } = await getSearchRepositories({
-      variables: { topic: query },
+      variables: { topic: query, first: 9 },
     });
 
     dispatch(setRepositories({ repositories: data.search.nodes }));
@@ -43,27 +32,23 @@ export function useHome() {
     }
   }
 
-  async function handleSearchRepositoriesNextPage() {
+  async function handleNextAndPrevPage(type: string) {
     dispatch(setLoadingRepositories({ loading: true }));
 
-    const { data } = await getSearchRepositoriesNextPageQuery({
-      variables: { topic: search, endCursor: pageInfo.endCursor },
-    });
+    const prevPage = {
+      topic: search,
+      before: pageInfo.startCursor,
+      last: 9,
+    };
 
-    dispatch(setRepositories({ repositories: data.search.nodes }));
-    dispatch(setPageInfo({ pageInfo: data.search.pageInfo }));
-    dispatch(setLoadingRepositories({ loading: false }));
+    const nextPage = {
+      topic: search,
+      after: pageInfo.endCursor,
+      first: 9,
+    };
 
-    if (data.search.nodes.length === 0) {
-      alert("Essa busca não gerou nenhum resultado.");
-    }
-  }
-
-  async function handleSearchRepositoriesPreviousPage() {
-    dispatch(setLoadingRepositories({ loading: true }));
-
-    const { data } = await getSearchRepositoriesPreviousPageQuery({
-      variables: { topic: search, startCursor: pageInfo.startCursor },
+    const { data } = await fetchMore({
+      variables: type === "next" ? nextPage : prevPage,
     });
 
     dispatch(setRepositories({ repositories: data.search.nodes }));
@@ -84,7 +69,6 @@ export function useHome() {
     loadingRepositories,
     repositoriesIsEmptyOrLoading,
     handleSearchRepositories,
-    handleSearchRepositoriesNextPage,
-    handleSearchRepositoriesPreviousPage,
+    handleNextAndPrevPage,
   };
 }
