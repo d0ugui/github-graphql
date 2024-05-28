@@ -1,9 +1,17 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { setSelectedRepository } from "../features/repositories";
 import { useAppDispatch, useAppSelector } from "../hooks";
+import { useHome } from "../useHome";
 import { RepositorieCard } from "./RepositorieCard";
 
 export function Repositories() {
-  const repositories = useAppSelector((state) => state.repositories.data);
+  const {
+    handleSearchRepositoriesNextPage,
+    handleSearchRepositoriesPreviousPage,
+  } = useHome();
+  const { data: repositories, pageInfo } = useAppSelector(
+    (state) => state.repositories
+  );
   const dispatch = useAppDispatch();
 
   return (
@@ -18,6 +26,23 @@ export function Repositories() {
             onClick={() => dispatch(setSelectedRepository({ data: item }))}
           />
         ))}
+      </div>
+
+      <div className="flex items-center justify-end w-full gap-1 mt-5">
+        <button
+          className="p-2 bg-gray-200/70 rounded-lg hover:bg-gray-300"
+          onClick={handleSearchRepositoriesPreviousPage}
+          disabled={!pageInfo.hasPreviousPage}
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <button
+          className="p-2 bg-gray-200/70 rounded-lg hover:bg-gray-300"
+          onClick={handleSearchRepositoriesNextPage}
+          disabled={!pageInfo.hasNextPage}
+        >
+          <ChevronRight size={24} />
+        </button>
       </div>
     </main>
   );

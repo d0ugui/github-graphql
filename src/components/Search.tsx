@@ -1,21 +1,26 @@
 import { Search as SearchIcon } from "lucide-react";
-import { useAppSelector } from "../hooks";
+import { useState } from "react";
+import { setSearchFilter } from "../features/repositories";
+import { useAppDispatch, useAppSelector } from "../hooks";
 
 interface SearchProps {
-  value: string;
-  handleChange(value: string): void;
-  onSubmit(): void;
+  onSubmit(query: string): void;
 }
 
-export function Search({ handleChange, value, onSubmit }: SearchProps) {
-  const { loadingRepositories } = useAppSelector((state) => state.repositories);
+export function Search({ onSubmit }: SearchProps) {
+  const { loadingRepositories, search } = useAppSelector(
+    (state) => state.repositories
+  );
+  const dispatch = useAppDispatch();
+  const [searchQuery, setSearchQuery] = useState(search);
 
   function handleSubmit() {
-    if (!value || value === " ") {
+    if (!searchQuery || searchQuery === " ") {
       return alert("Preencha o campo de busca");
     }
 
-    onSubmit();
+    dispatch(setSearchFilter({ search: searchQuery }));
+    onSubmit(searchQuery);
   }
 
   return (
@@ -37,8 +42,8 @@ export function Search({ handleChange, value, onSubmit }: SearchProps) {
             type="text"
             placeholder="O que você está procurando?"
             className="w-full outline-none"
-            value={value}
-            onChange={(e) => handleChange(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <button

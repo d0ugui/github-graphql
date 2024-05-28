@@ -8,8 +8,6 @@ import { useHome } from "./useHome";
 
 function App() {
   const {
-    search,
-    setSearch,
     error,
     handleSearchRepositories,
     repositoriesIsEmptyOrLoading,
@@ -24,11 +22,7 @@ function App() {
   return (
     <div className="flex flex-col items-center px-4 xl:px-0">
       <Header />
-      <Search
-        value={search}
-        handleChange={setSearch}
-        onSubmit={handleSearchRepositories}
-      />
+      <Search onSubmit={handleSearchRepositories} />
 
       {loadingRepositories && (
         <div className="mt-10">
