@@ -2,6 +2,7 @@ import { useLazyQuery } from "@apollo/client";
 import { useState } from "react";
 import { Error } from "./components/Error";
 import { Header } from "./components/Header";
+import { Modal } from "./components/Modal";
 import { Repositories } from "./components/Repositories";
 import { Search } from "./components/Search";
 import { setRepositories } from "./features/repositories";
@@ -44,6 +45,8 @@ function App() {
       ) : (
         !repositoriesIsEmpty && <Repositories />
       )}
+
+      <Modal />
     </div>
   );
 }
