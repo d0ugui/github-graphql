@@ -9,7 +9,7 @@ interface RepositorieCard extends ComponentProps<"button"> {
 export function RepositorieCard({ repo, ...rest }: RepositorieCard) {
   return (
     <button
-      className="flex flex-col items-start gap-3 border-[#141414]/20 border-2 rounded-xl p-4 min-h-[160px] justify-between"
+      className="flex flex-col items-start gap-3 border-[#141414]/20 border-2 rounded-xl p-4 h-[164px] justify-between"
       {...rest}
     >
       <div className="flex items-center gap-4">
@@ -19,7 +19,7 @@ export function RepositorieCard({ repo, ...rest }: RepositorieCard) {
         </h1>
       </div>
 
-      <p className="text-sm line-clamp-5 text-start">{repo.description}</p>
+      <p className="text-sm line-clamp-3 text-start">{repo.description}</p>
 
       <div className="flex items-center gap-4">
         <p className="flex items-center gap-1 text-sm">

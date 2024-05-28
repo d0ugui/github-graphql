@@ -10,6 +10,14 @@ interface SearchProps {
 export function Search({ handleChange, value, onSubmit }: SearchProps) {
   const { loadingRepositories } = useAppSelector((state) => state.repositories);
 
+  function handleSubmit() {
+    if (!value || value === " ") {
+      return alert("Preencha o campo de busca");
+    }
+
+    onSubmit();
+  }
+
   return (
     <section className="flex flex-col max-w-[1200px] w-full mt-20">
       <div className="flex flex-col gap-2">
@@ -35,7 +43,7 @@ export function Search({ handleChange, value, onSubmit }: SearchProps) {
         </div>
         <button
           className="text-white bg-primary py-5 px-10 rounded-tr-lg rounded-br-lg"
-          onClick={onSubmit}
+          onClick={handleSubmit}
           disabled={loadingRepositories}
         >
           Search

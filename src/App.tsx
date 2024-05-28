@@ -33,6 +33,10 @@ function App() {
 
     dispatch(setRepositories({ repositories: data.search.nodes }));
     dispatch(setLoadingRepositories({ loading: false }));
+
+    if (data.search.nodes.length === 0) {
+      alert("Essa busca não gerou nenhum resultado.");
+    }
   }
 
   if (error) {
