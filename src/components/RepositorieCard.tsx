@@ -19,7 +19,9 @@ export function RepositorieCard({ repo, ...rest }: RepositorieCard) {
         </h1>
       </div>
 
-      <p className="text-sm line-clamp-3 text-start">{repo.description}</p>
+      <p className="text-sm line-clamp-3 text-start max-w-[353px] w-full">
+        {repo.description}
+      </p>
 
       <div className="flex items-center gap-4">
         <p className="flex items-center gap-1 text-sm">
