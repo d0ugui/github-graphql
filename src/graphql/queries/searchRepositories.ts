@@ -27,10 +27,10 @@ export const searchRepositories = gql`
             name
             color
           }
-          issues {
+          issues(states: OPEN) {
             totalCount
           }
-          pullRequests {
+          pullRequests(states: OPEN) {
             totalCount
           }
           forks {
