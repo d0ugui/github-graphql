@@ -1,7 +1,7 @@
 import { Search as SearchIcon } from "lucide-react";
 import { useState } from "react";
-import { setSearchFilter } from "../features/repositories";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { setSearchFilter } from "../store/ducks/repositories";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 
 interface SearchProps {
   onSubmit(query: string): void;

@@ -7,8 +7,8 @@ import {
   Star,
   X,
 } from "lucide-react";
-import { resetSelectedRepository } from "../features/repositories";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { resetSelectedRepository } from "../store/ducks/repositories";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { formatDate } from "../utils/formatDate";
 
 export function Modal() {

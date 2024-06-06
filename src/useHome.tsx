@@ -1,11 +1,11 @@
 import { useLazyQuery } from "@apollo/client";
+import { searchRepositories } from "./graphql/queries/searchRepositories";
 import {
   setLoadingRepositories,
   setPageInfo,
   setRepositories,
-} from "./features/repositories";
-import { searchRepositories } from "./graphql/queries/searchRepositories";
-import { useAppDispatch, useAppSelector } from "./hooks";
+} from "./store/ducks/repositories";
+import { useAppDispatch, useAppSelector } from "./store/hooks";
 
 export function useHome() {
   const dispatch = useAppDispatch();

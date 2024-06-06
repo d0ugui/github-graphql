@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { setSelectedRepository } from "../features/repositories";
-import { useAppDispatch, useAppSelector } from "../hooks";
+import { setSelectedRepository } from "../store/ducks/repositories";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useHome } from "../useHome";
 import { RepositorieCard } from "./RepositorieCard";
 

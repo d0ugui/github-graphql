@@ -1,18 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RepositoryProps } from "../interfaces/Repository";
-
-interface RepositoriesState {
-  data: [] | RepositoryProps[];
-  selectedRepository: RepositoryProps | null;
-  loadingRepositories: boolean;
-  pageInfo: {
-    endCursor: string;
-    startCursor: string;
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-  };
-  search: string;
-}
+import { RepositoriesState } from "./types";
 
 const initialState: RepositoriesState = {
   data: [],

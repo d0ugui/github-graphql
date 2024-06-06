@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import App from "./App.tsx";
 import { client } from "./graphql/client.ts";
 import "./index.css";
-import { store } from "./store.ts";
+import store from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
